@@ -1,0 +1,196 @@
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 300;
+}
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 380px;
+}
+    * {
+        padding: 0;
+        margin: 0;
+    }
+footer {
+    width: 100%;
+    height: 125px;
+    color: rgba(0,0,0,.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer a {
+    color: #8ec5fc;
+}
+footer > div {
+    margin: 5px 32px;
+    display: flex;
+    flex-direction: column;
+}
+footer > div i {
+    margin-right: 5px;
+}
+footer div >span {
+    margin-bottom: 8px;
+}
+a {text-decoration: none;}
+.header-menu {
+    width: 100%;
+    height: 65px;
+    line-height: 65px;
+    box-sizing: border-box;
+    padding: 0 48px;
+    position: fixed;
+    top: 0;
+    color: white;
+    z-index: 999;
+    -webkit-transition: all .3s;
+    will-change: padding-top;
+}
+.header-menu > div {display: inline-block}
+.header-menu div > a {
+    color: white;
+}
+.wxm {
+    width: 100%;
+    height: 460px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    background: url("http://wx2.sinaimg.cn/mw690/0060lm7Tly1fuad9g7r6gj30x10jgk0o.jpg") no-repeat center / cover;
+    -webkit-transition: all .4s ease-out;
+}
+.wxm > h2 {
+    text-shadow: 0 2px 3px rgba(0,0,0,.25);
+    text-align: center;
+}
+.sms-body {
+    min-height: 300px;
+    background: white;
+    box-shadow: 0 1px 5px -1px rgba(0,0,0,.15);
+    position: relative;
+    z-index: 99;
+    color: rgba(0,0,0,.65);
+}
+.post-page-body {
+    box-sizing: border-box;
+    padding: 40px 36px;
+    padding-top: 32px;
+    padding-bottom: 8px;
+    position: relative;
+}
+#theSmsImg {
+    height: 320px;
+    background-image: url("http://img.hb.aicdn.com/c65d14e937f807073abbdf8d43279d96af53d42b45229-kjzprK_fw658");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    text-align: center;
+}
+.tag-item {margin-top: 10px}
+.tag-item a {
+    display: inline-block;
+    padding: 6px 12px;
+    background: cadetblue;
+    color: white;
+    margin-left: 10px;
+    font-size: 12px;
+}
+.tag-item a:first-child {
+    margin-left: 0;
+}
+
+
+.post-page-sms {
+    padding-top: 0;
+}
+#comments {
+    box-sizing: border-box;
+    padding: 0 36px;
+}
+
+.send {
+    width: 100%;
+    background: rgba(0,0,0,.03);
+    box-sizing: border-box;
+    padding: 24px 28px;
+}
+.sms-filed {
+    width: 100%;
+    min-height: 140px;
+    position: relative;
+}
+#sms-conText {
+    width: 100%;
+    height: 140px;
+    border: none;
+    resize: none;
+    outline: none;
+    box-sizing: border-box;
+    color: rgba(0,0,0,.65);
+    padding: 12px;
+    padding-right: 222px;
+    font-size: 13px;
+    line-height: 1.1;
+    font-family: "Microsoft YaHei UI";
+}
+
+.getDataInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    z-index: 99;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 9px;
+    color: rgba(0,0,0,.65);
+}
+.getData-input-pos {
+    position: absolute;
+    right: 0;
+    width: 210px;
+    height: 140px;
+    background: white;
+    box-shadow: -4px 0 15px -6px rgba(0,0,0,.15);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 12px 0;
+}
+.getData-input-pos > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+.com-sms {
+    margin: 0 0 10px 0;
+}
+.com-sms a {
+    color: rgba(0,0,0,.55);
+    font-size: 12px;
+}
+.subBtn {
+    width: 140px;
+    height: 30px;
+    outline: none;
+    background: lightblue;
+    color: white;
+    border: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 0 3px rgba(0,0,0,.15);
+}
+}

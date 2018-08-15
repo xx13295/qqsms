@@ -26,10 +26,10 @@ public class HttpClientSms {
 	private static final int templateId = 171000;
 	
 	public static void main(String[] args) {
-		//System.err.println(SmsSemder("王小明","ojbkplus","1800000000"));
+		//System.err.println(smsSemder("王小明","ojbkplus","1800000000"));
 	}
 	
-	public static String SmsSemder(String name,String sign,String phoneNumber){
+	public static String smsSemder(String name,String sign,String phoneNumber){
 		long random = SmsSenderUtil.getRandom();
 	    long now = SmsSenderUtil.getCurrentTime();
 	    String smsurl=String.format(url,appid,random);
@@ -46,11 +46,11 @@ public class HttpClientSms {
 	    obj.put("tel", tel);
 	    obj.put("time", now);
 	    obj.put("tpl_id", templateId);
-	    return doPostForJson(smsurl, obj.toString());
+	    return smsSemder(smsurl, obj.toString());
 	}
 	
 	
-	public static String doPostForJson(String url,String jsonParams) {
+	public static String smsSemder(String url,String jsonParams) {
 		 
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpPost httpPost = new HttpPost(url);
@@ -58,7 +58,7 @@ public class HttpClientSms {
 				.setSocketTimeout(60 * 1000).setRedirectsEnabled(true).build();
 
 		httpPost.setConfig(requestConfig);
-		httpPost.setHeader("Content-Type", "application/json"); //
+		httpPost.setHeader("Content-Type", "application/json");
 		try {
 			httpPost.setEntity(new StringEntity(jsonParams, ContentType.create("application/json", "utf-8")));
 			LOGGER.info("request parameters" + EntityUtils.toString(httpPost.getEntity()));

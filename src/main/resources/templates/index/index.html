@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>sms</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/mdui/0.4.0/css/mdui.min.css"  onerror="this.href='${ctxPath}/static/css/mdui.min.css'"/>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="${ctxPath}/static/css/sms.css"> 
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e3c7c90419ff630d50cf4047a6e05e00";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+<body>
+<div class="header-menu">
+    <div class="mdui-hidden-xs">
+        <a href="javascript:;">
+           短信    </a>
+    </div>
+    <div style="clear: both"></div>
+</div>
+
+    <div class="wxm">
+        <h2>There's gotta be a way to get you close to me</h2>
+    </div>
+ 
+<div class="mdui-container">
+    <div class="mdui-row">
+        <div class="mdui-col-md-3 mdui-hidden-sm mdui-hidden-xs">
+            
+        </div>
+        <div class="mdui-col-md-8 sms-body">
+            <div class="">
+                <div class="mdui-row">
+                            <div id="theSmsImg" style="background-image: url('http://wx1.sinaimg.cn/mw690/0060lm7Tly1fuadj23opbj30m80e0q4a.jpg')">
+                                <h1 class="post-page-Title">发短信就完事了</h1>
+                                <p id="pageAuthor">WXM                                    
+                                    <span style="margin: 0 5px">·</span><span style="letter-spacing: 1px;">2018-08-15</span>
+                                </p>
+
+                                <div class="tag-item">
+                                    <a href="javascript:;">短信</a>                             
+                                </div>
+                            </div>
+                          
+             </div>
+                <div class="post-page-body ">
+                    <div class="page-head-data">
+                        <div style="clear: both"></div>
+                        <div class="post-page-content page">
+                            <p> </p>                           
+                            <div class="mdui-divider" style="margin-top: 30px;margin-bottom: 16px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                <div class="post-page-sms">
+                    <div class="mdui-row ">
+                        <div id="msg">
+                            <h3>开始丧心病狂的发短信吧</h3>
+                        </div>
+                        <div>
+                            <div id="respond-post" class="send">
+                                <form method="post" action="${ctxPath}/qqsms" id="sms-form" role="form">
+                                    <div class="com-sms"></div>
+                                    <div class="sms-filed">
+                                        <div class="getData-input-pos">
+                                            <div>
+                                                <i class="fa fa-user-o"></i>
+                                                <input type="text" class="getDataInput" placeholder="昵称" name="name" value="" required />
+                                            </div>
+                                            <div>
+                                                <i class="fa fa-mobile fa-2x"></i>
+                                                <input type="text" class="getDataInput" placeholder="手机" name="phone" value="" required />
+                                            </div>
+                                        </div>
+                                        <textarea id="sms-conText" name="text" placeholder="今天天气真好~~" required></textarea>
+                                        <button type="button" class="subBtn mdui-ripple">发送短信</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="mdui-divider" style="margin-top: 32px;"></div>
+<footer>
+    <div>Copyright © 2018 - 2019 WXM</div>
+</footer>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/layer/3.0.3/layer.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	$(".subBtn").click(function(){
+		if($(this).hasClass('disabled')){
+			return;
+		}
+		var formArray = $('#sms-form').serializeArray();
+		for(var x = 0 ;x < formArray.length ; x++){
+			var item = formArray[x];
+			if(item['name'] == 'name'){
+				if(!item['value'].trim()){
+					layer.msg('昵称不能为空');
+					return;
+				}else if(item['value'].length>4){
+					layer.msg('超长？不存在的！');
+					return;
+				}
+			}
+			if(item['name'] == 'phone'){
+				if(!item['value'].trim()){
+					layer.msg('手机不能为空');
+					return;
+				}else if(!new RegExp("^[1][3,4,5,7,8,9][0-9]{9}$").test(item['value'])){
+                    layer.msg('该手机格式不支持');
+                    return;
+                }
+			}
+		}
+		var content = $("#sms-conText").val();
+		if(!content.trim()){
+			layer.msg('内容不能为空！');
+			return;
+		}
+		formArray.push({name:'content',value:content})
+		layer.load(2);
+		$(this).addClass('disabled');
+		$(this).text('发送中...')
+		$.ajax({
+			url:'${ctxPath}/qqsms',
+			method:'POST',
+			data:formArray,
+			success:function(response){
+				$('.subBtn').text('发送短信');
+				parent.layer.closeAll();
+				console.log(response);
+				$('.subBtn').removeClass('disabled');
+				if(response.success){
+					layer.msg('ojbk');
+				}
+			},
+			error:function(response){
+				$('.subBtn').text('发送短信');
+				parent.layer.closeAll();
+    			layer.msg('系统开小猜了呢~');
+    			console.log(response);
+    			$('.subBtn').removeClass('disabled');
+			}
+		});
+   
+    });
+});
+</script>
+</html>
+
